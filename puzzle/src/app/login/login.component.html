@@ -1,0 +1,16 @@
+<div class="login-form">
+    <label for="email">Email</label>
+    <span><strong>Your Email: </strong> {{ email }}</span>
+    <input type="email" name="email" id="email" [(ngModel)]="email">
+  
+    <label for="password">Password</label>
+    <span><strong>Your Password: </strong> {{ password }}</span>
+    <input type="password" name="password" id="password" [(ngModel)]="password">
+  
+    <label for="password-confirm">Confirm Password</label>
+    <span><strong>Your Confirmed Password: </strong> {{ passwordConfirm }}</span>
+    <input type="password" name="password-confirm" id="password-confirm" [(ngModel)]="passwordConfirm">
+  
+    <button>Login</button>
+</div>
+  
