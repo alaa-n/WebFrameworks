@@ -1,0 +1,77 @@
+<div class="signup-form">
+    <form [formGroup]="signupForm" (ngSubmit)="register()">
+      <h2>Userdata</h2>
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" id="email" required />
+  
+      <div class="error-message" *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+        Please enter a valid email.
+      </div>
+  
+      <label for="password">Password</label>
+      <div class="password-container">
+        <input
+          type="password"
+          formControlName="password"
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          required
+          minlength="8"
+        />
+  
+        <div class="error-message" *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+          Please enter a password with a minimum length of 8 characters.
+        </div>
+  
+        <button class="eye-button" (click)="toggleShowPassword()">
+          <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </button>
+      </div>
+  
+      <label for="confirmPassword">Confirm Password</label>
+      <div class="password-container">
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          id="confirmPassword"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          required
+          minlength="8"
+        />
+  
+        <div class="error-message" *ngIf="signupForm.controls['confirmPassword'].invalid && signupForm.controls['confirmPassword'].touched">
+          Please enter a password with a minimum length of 8 characters.
+        </div>
+  
+        <div class="error-message" *ngIf="passwordMismatch && signupForm.controls['confirmPassword'].touched">
+          Passwords do not match.
+        </div>
+  
+        <button class="eye-button" (click)="toggleShowConfirmPassword()">
+          <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </button>
+      </div>
+  
+      <h2>Registration</h2>
+      <label for="company">Company</label>
+      <input
+        type="text"
+        name="company"
+        id="company"
+        disabled
+        value="FH Technikum Wien"
+      />
+  
+      <label for="address">Address</label>
+      <textarea name="address" id="address" formControlName="address"></textarea>
+  
+      <label for="city">City</label>
+      <input type="text" name="city" id="city" required />
+  
+      <label for="postal-code">Postal Code</label>
+      <input type="text" name="postal-code" id="postal-code" (input)="restrictToNumbers($event)" required />
+  
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  

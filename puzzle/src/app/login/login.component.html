@@ -1,16 +1,26 @@
 <div class="login-form">
-    <label for="email">Email</label>
-    <span><strong>Your Email: </strong> {{ email }}</span>
-    <input type="email" name="email" id="email" [(ngModel)]="email">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" id="email" required>
   
-    <label for="password">Password</label>
-    <span><strong>Your Password: </strong> {{ password }}</span>
-    <input type="password" name="password" id="password" [(ngModel)]="password">
+      <div class="error-message" *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+        Please enter a valid email.
+      </div>
   
-    <label for="password-confirm">Confirm Password</label>
-    <span><strong>Your Confirmed Password: </strong> {{ passwordConfirm }}</span>
-    <input type="password" name="password-confirm" id="password-confirm" [(ngModel)]="passwordConfirm">
+      <label for="password">Password</label>
+      <div class="password-container">
+            <input type="password" formControlName="password" id="password" [type]="showPassword ? 'text' : 'password'" required>
   
-    <button>Login</button>
-</div>
+            <div class="error-message" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+            Please enter a password.
+            </div>
+  
+            <button class="eye-button" (click)="toggleShowPassword()">
+             <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+      </div>
+  
+      <button type="submit">Login</button>
+    </form>
+  </div>
   
