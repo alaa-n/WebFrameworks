@@ -10,14 +10,12 @@
       <label for="password">Password</label>
       <div class="password-container">
             <input type="password" formControlName="password" id="password" [type]="showPassword ? 'text' : 'password'" required>
-  
+            <button class="eye-button" (click)="toggleShowPassword()">
+              <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'">Show password</i>
+             </button>
             <div class="error-message" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
             Please enter a password.
             </div>
-  
-            <button class="eye-button" (click)="toggleShowPassword()">
-             <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-            </button>
       </div>
   
       <button type="submit">Login</button>

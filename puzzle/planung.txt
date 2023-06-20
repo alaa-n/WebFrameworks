@@ -1,0 +1,31 @@
+Beschreiben Sie auf eine für Sie geeignete Variante wie Sie Ihre Software (für das Projekt) erstellen werden:
+
+    - Aus welchen Teilen wird diese bestehen?
+        -> Server: stellt  API-Ressourcen bereit und verarbeitet eingehende Anfragen
+        -> Ressourcen: repräsentieren die Entitäten, mit denen die API arbeitet, z. B. Benutzer
+        -> Endpunkte: Jede Ressource hat einen eindeutigen Endpunkt (URL), über den auf sie zugegriffen wird
+        -> HTTP-Methoden: HTTP-Methoden (GET, POST, PUT, DELETE) werden verwendet, um Operationen auf den Ressourcen anzugeben
+        -> Datenbank um die Daten zu speichern
+
+    - Welche Variablen müssen übergeben, validiert, gespeichert oder geladen werden?
+        Variablen, die übergeben, validiert, gespeichert oder geladen werden können, wie die einzelnen Daten von einem User.
+        -> Übergeben: Daten zur Erstellung oder Aktualisierung einer Ressource, z. B. Benutzername, E-Mail-Adresse, ...
+        -> Validiert: eingehende Daten müssen validiert werden (sicherstellen, dass sie den Anforderungen entsprechen, z. B. Überprüfung  E-Mail-Adresse auf Gültigkeit)
+        -> Gespeichert: Daten, die in einer Datenbank oder einem anderen Speichermedium gespeichert werden sollen
+        -> Geladen: Daten, die aus der Datenbank oder einem anderen Speichermedium abgerufen werden sollen (info von Usern)
+    
+    - Wo liegen welche Ressourcen?
+        an Endpunkten auf dem Server, zum Beispiel Benutzerressourcen unter dem Endpunkt "/users". Rest kommt noch in den folgenden Übungen ...
+
+    - Wie kommunizieren die einzelnen Teile miteinander?
+        Kommunikation zwischen  einzelnen Teilen erfolgt über das HTTP-Protokoll. 
+        Client sendet HTTP-Anfragen an API-Endpunkte auf dem Server.
+        Anfragen enthalten Informationen (z.B. gewünschte Operation, Ressource, Daten).
+        Der Server empfängt Anfragen, verarbeitet sie und sendet eine HTTP-Antwort zurück an den Client. 
+        Die Antwort enthält die gewünschten Daten oder Statuscodes.
+
+    - Welche Technologien kommen zum Einsatz?
+        -> Frontend: Angular
+        -> Framework: Express
+        -> Datenbank: Mongoose
+        -> HTTP-Server: Apache

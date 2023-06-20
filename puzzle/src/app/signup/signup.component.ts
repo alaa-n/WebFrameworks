@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BackendService } from '../backend.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,7 @@ export class SignupComponent implements OnInit {
   showConfirmPassword: boolean = false;
   passwordMismatch: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private backendService: BackendService) {}
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -44,6 +46,8 @@ export class SignupComponent implements OnInit {
       const confirmPassword = this.signupForm.value.confirmPassword;
       const address = this.signupForm.value.address;
       const postalCode = this.signupForm.value.postalCode;
+
+      this.backendService.signup(email, password);
 
       console.log('Registration submitted');
       console.log('Email:', email);

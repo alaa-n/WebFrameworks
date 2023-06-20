@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StartComponent } from './start/start.component';
 //import { MatFormFieldModule } from '@angular/material/form-field';
 //import { MatIconModule } from '@angular/material/icon';
 //import { MatInputModule } from '@angular/material/input';
@@ -23,6 +25,7 @@ import { SignupComponent } from './signup/signup.component';
     //ProductAlertsComponent,
     LoginComponent,
     SignupComponent,
+    StartComponent,
     //SignupComponent
 ], imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { SignupComponent } from './signup/signup.component';
     RouterModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
     //MatFormFieldModule,
     //MatIconModule,
     //MatInputModule

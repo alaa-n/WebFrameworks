@@ -18,16 +18,12 @@
           required
           minlength="8"
         />
-  
         <div class="error-message" *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
           Please enter a password with a minimum length of 8 characters.
         </div>
-  
-        <button class="eye-button" (click)="toggleShowPassword()">
-          <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-        </button>
+        
       </div>
-  
+
       <label for="confirmPassword">Confirm Password</label>
       <div class="password-container">
         <input
@@ -46,11 +42,17 @@
         <div class="error-message" *ngIf="passwordMismatch && signupForm.controls['confirmPassword'].touched">
           Passwords do not match.
         </div>
-  
-        <button class="eye-button" (click)="toggleShowConfirmPassword()">
-          <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-        </button>
       </div>
+
+      <button class="eye-button" (click)="toggleShowPassword()">
+        <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'">Show password</i>
+      </button>
+      <button class="eye-button" (click)="toggleShowConfirmPassword()">
+        <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'">Show confirmed password</i>
+      </button>
+
+      <br>
+      <br>
   
       <h2>Registration</h2>
       <label for="company">Company</label>
@@ -68,8 +70,8 @@
       <label for="city">City</label>
       <input type="text" name="city" id="city" required />
   
-      <label for="postal-code">Postal Code</label>
-      <input type="text" name="postal-code" id="postal-code" (input)="restrictToNumbers($event)" required />
+      <label for="postalCode">Postal Code</label>
+      <input type="text" name="postalCode" id="postalCode" formControlName="postalCode" (input)="restrictToNumbers($event)" required />
   
       <button type="submit">Register</button>
     </form>

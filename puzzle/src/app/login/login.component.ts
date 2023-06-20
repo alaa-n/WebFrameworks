@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BackendService } from '../backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   showPassword: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private backendService: BackendService, private router: Router) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -28,11 +30,14 @@ export class LoginComponent implements OnInit {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
 
-      if (email === 'test@test.at' && password === '12345678') {
-        console.log('Login successful.');
-      } else {
-        console.log('Login failed.');
-      }
+      this.backendService.login(email, password).subscribe((responseData) => {
+        this.backendService.Token = responseData.Token;
+        this.backendService.email = email;
+        console.log(responseData.Token);
+
+        this.router.navigate(['/start']);
+      });
+
     } else {
       console.log('Invalid form.');
     }
